@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title:
-    "Next.js E-commerce Dashboard Page | NextAdmin - Next.js Dashboard Kit",
-  description: "This is Next.js Home page for NextAdmin Dashboard Kit",
+    "Welcome",
+  description: "This is Next.js Home page ",
 };
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
         </p>
         <div className="flex flex-row items-center justify-center my-6 gap-6">
         <button className="rounded bg-[#4328EB] px-8 py-4 text-[18px] font-medium text-white">
-          <a href="/auth/signup">Try App</a>
+          <a href="/auth/signin">Try App</a>
         </button>
 
         <Link

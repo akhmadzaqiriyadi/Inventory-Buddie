@@ -196,7 +196,7 @@ const AddTransactionPage = () => {
           <select
             value={selectedRack}
             onChange={handleRackChange}
-            className="rounded-[7px] border border-stroke bg-transparent py-3 pl-4 pr-8 outline-none transition focus:border-primary active:border-primary dark:border-dark-3 dark:bg-dark-2"
+            className="appearance-none rounded-[7px] border border-stroke bg-transparent py-3 pl-4 pr-8 outline-none transition focus:border-primary active:border-primary dark:border-dark-3 dark:bg-dark-2"
           >
             <option value="">All Racks</option>
             {racks.map((rack) => (

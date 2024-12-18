@@ -128,10 +128,10 @@ const TransactionDetailPage: React.FC = () => {
                     {detail.qty}
                   </td>
                   <td className="px-4 py-4 text-dark dark:text-white">
-                    ${detail.product.priceSell.toFixed(2)}
+                    Rp.{detail.product.priceSell.toFixed(2)}
                   </td>
                   <td className="px-4 py-4 text-dark dark:text-white">
-                    ${detail.totalPrice.toFixed(2)}
+                    Rp.{detail.totalPrice.toFixed(2)}
                   </td>
                 </tr>
               ))}

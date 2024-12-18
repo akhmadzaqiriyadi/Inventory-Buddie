@@ -5,28 +5,28 @@ import Image from "next/image";
 
 const notificationList = [
   {
-    image: "/images/user/user-15.png",
-    title: "Piter Joined the Team!",
+    image: "/images/user/hasbi.jpeg",
+    title: "Hasbi Joined the Team!",
     subTitle: "Congratulate him",
   },
   {
-    image: "/images/user/user-02.png",
+    image: "/images/user/zelia.jpeg",
     title: "New message received",
-    subTitle: "Devid sent you new message",
+    subTitle: "Zelia sent you new message",
   },
   {
-    image: "/images/user/user-26.png",
+    image: "/images/user/hehe.jpeg",
     title: "New Payment received",
     subTitle: "Check your earnings",
   },
   {
-    image: "/images/user/user-28.png",
-    title: "Jolly completed tasks",
-    subTitle: "Assign her newtasks",
+    image: "/images/user/alie.jpeg",
+    title: "Alie completed tasks",
+    subTitle: "Assign him newtasks",
   },
   {
-    image: "/images/user/user-27.png",
-    title: "Roman Joined the Team!",
+    image: "/images/user/zaki.jpeg",
+    title: "Zaki Joined the Team!",
     subTitle: "Congratulate him",
   },
 ];
