@@ -1,0 +1,38 @@
+# Node modules
+/node_modules/
+
+# Next.js build output
+/.next/
+/out/
+
+# Log files
+*.log
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Dependency directories
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js generated files
+next.config.js
+next-env.d.ts
+
+# MacOS system files
+.DS_Store
+
+# VSCode directory
+.vscode/
+
+# Optional: Ignore any test or coverage files
+/coverage/
+
+# Ignore any other folders you don't want to track
+/dist/
+/build/

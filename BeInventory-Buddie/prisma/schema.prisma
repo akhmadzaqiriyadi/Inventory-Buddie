@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  categoryId  Int
+  rackId      Int
+  stock       Int      @default(0)
+  pricePurchase Float
+  priceSell   Float
+  imageUrl     String?
+  category    Category @relation(fields: [categoryId], references: [id])
+  rack        Rack     @relation(fields: [rackId], references: [id])
+  details     DetailTrx[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Category {
+  id        Int       @id @default(autoincrement())
+  name      String
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Rack {
+  id        Int       @id @default(autoincrement())
+  location  String
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Transaction {
+  id        Int        @id @default(autoincrement())
+  trxType   String     // "in" or "out"
+  date      DateTime   @default(now())
+  notes     String?
+  details   DetailTrx[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model DetailTrx {
+  id         Int        @id @default(autoincrement())
+  trxId      Int
+  productId  Int
+  qty        Int
+  totalPrice Float 
+  deletedAt  DateTime?  // Soft delete
+  transaction Transaction @relation(fields: [trxId], references: [id])
+  product    Product     @relation(fields: [productId], references: [id])
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("user") // "admin" atau "user"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
