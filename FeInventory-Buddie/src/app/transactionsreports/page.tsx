@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const AccountsPage = () => {
   return (
     <DefaultLayout>
-      <Breadcrumb pageName="Products" />
+      <Breadcrumb pageName="Transaction" />
       <div className="flex flex-col gap-10">
         <TebleTransactionsReports />
       </div>

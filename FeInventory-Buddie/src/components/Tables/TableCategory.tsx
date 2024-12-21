@@ -67,6 +67,13 @@ const TableCategory = () => {
 
   // Handler for deleting a category
   const handleDeleteCategory = async (categoryId: number) => {
+    // Show confirmation alert before deleting
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete this category? Deleting this category will remove all products associated with it.",
+    );
+
+    if (!isConfirmed) return;
+
     try {
       await axios.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/api/categories/${categoryId}`,

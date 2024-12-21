@@ -17,7 +17,7 @@ const TableShelves = () => {
     const fetchShelves = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/racks`
+          `${process.env.NEXT_PUBLIC_API_URL}/api/racks`,
         );
         setShelves(response.data);
         setLoading(false);
@@ -43,7 +43,7 @@ const TableShelves = () => {
     try {
       const response = await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/api/racks/${selectedShelve.id}`,
-        { location: data.location }
+        { location: data.location },
       );
 
       // Update local state
@@ -51,8 +51,8 @@ const TableShelves = () => {
         prevShelves.map((shelve) =>
           shelve.id === selectedShelve.id
             ? { ...shelve, location: data.location || shelve.location }
-            : shelve
-        )
+            : shelve,
+        ),
       );
 
       // Close dialog
@@ -65,14 +65,23 @@ const TableShelves = () => {
 
   // Handler for deleting a shelve
   const handleDeleteShelve = async (shelveId: number) => {
+    // Show confirmation alert
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this shelve? This will remove all products associated with this shelve.",
+    );
+
+    if (!confirmDelete) {
+      return; // If the user cancels, do nothing
+    }
+
     try {
       await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/racks/${shelveId}`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/racks/${shelveId}`,
       );
 
       // Update local state
       setShelves((prevShelves) =>
-        prevShelves.filter((shelve) => shelve.id !== shelveId)
+        prevShelves.filter((shelve) => shelve.id !== shelveId),
       );
     } catch (err) {
       setError("Failed to delete shelve.");

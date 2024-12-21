@@ -159,7 +159,7 @@ const StockStatistics: React.FC = () => {
     {
       icon: StockIcons.categoryStock,
       color: "#18BFFF",
-      title: "Categories in Stock",
+      title: "Categories Distribution in Stock",
       value: stockData.categoryDistribution.length.toString(),
       growthRate: "0", // No growth rate provided
     },

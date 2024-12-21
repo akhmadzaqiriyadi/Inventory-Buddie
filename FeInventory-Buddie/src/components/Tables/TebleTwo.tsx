@@ -111,8 +111,8 @@ const TableTwo = () => {
           {/* Filter Section */}
           <div className="-z-999 flex items-center gap-x-4">
             <SearchForm query={searchQuery} onSearch={handleSearch} />
-            <button className="flex gap-x-2 font-semibold hover:text-primary">
-              <Link href="/admin/products/add-product">
+            <Link href="/admin/products/add-product">
+              <button className="flex gap-x-2 font-semibold hover:text-primary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -129,9 +129,9 @@ const TableTwo = () => {
                   <path d="M8 12h8" />
                   <path d="M12 8v8" />
                 </svg>
-              </Link>
-              Add Product
-            </button>
+                Add Product
+              </button>
+            </Link>
           </div>
           <div className="flex justify-end gap-x-4 pt-4">
             <div className="relative z-20 rounded-[7px] bg-white dark:bg-dark-2">
@@ -179,7 +179,7 @@ const TableTwo = () => {
                 onChange={handleRackChange}
               >
                 <option value="" className="text-dark-5  dark:text-dark-6">
-                  All Racks
+                  All Shelves
                 </option>
                 {racks.map((rack) => (
                   <option
@@ -234,124 +234,132 @@ const TableTwo = () => {
         </div>
       </div>
 
-      {filteredProducts.map((product) => (
-        <div
-          className="grid grid-cols-7 border-t border-stroke px-4 py-4.5 dark:border-dark-3 sm:grid-cols-8 md:px-6 2xl:px-7.5"
-          key={product.id}
-        >
-          <div className="col-span-2 flex items-center">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <div className="h-12.5 w-15 rounded-md">
-                {product.imageUrl && (
-                  <div
-                    style={{
-                      width: "60px",
-                      aspectRatio: "1/1",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <img
-                      src={product.imageUrl}
-                      alt={product.name}
+      {filteredProducts.length > 0 ? (
+        filteredProducts.map((product) => (
+          <div
+            className="grid grid-cols-7 border-t border-stroke px-4 py-4.5 dark:border-dark-3 sm:grid-cols-8 md:px-6 2xl:px-7.5"
+            key={product.id}
+          >
+            <div className="col-span-2 flex items-center">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                <div className="h-12.5 w-15 rounded-md">
+                  {product.imageUrl && (
+                    <div
                       style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
+                        width: "60px",
+                        aspectRatio: "1/1",
+                        overflow: "hidden",
                       }}
-                    />
-                  </div>
-                )}
+                    >
+                      <img
+                        src={product.imageUrl}
+                        alt={product.name}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+                <p className="text-body-sm font-medium text-dark dark:text-dark-6">
+                  {product.name}
+                </p>
               </div>
+            </div>
+            <div className="col-span-1 hidden items-center sm:flex">
               <p className="text-body-sm font-medium text-dark dark:text-dark-6">
-                {product.name}
+                {product.category.name}
               </p>
             </div>
-          </div>
-          <div className="col-span-1 hidden items-center sm:flex">
-            <p className="text-body-sm font-medium text-dark dark:text-dark-6">
-              {product.category.name}
-            </p>
-          </div>
-          <div className="col-span-1 hidden items-center sm:flex">
-            <p className="text-body-sm font-medium text-dark dark:text-dark-6">
-              {product.rack.location}
-            </p>
-          </div>
-          <div className="col-span-1 hidden items-center sm:flex">
-            <p className="text-body-sm font-medium text-dark dark:text-dark-6">
-              {product.stock}
-            </p>
-          </div>
-          <div className="col-span-2 flex items-center">
-            <p className="text-body-sm font-medium text-green">
-              Rp.{product.priceSell.toFixed(2)}
-            </p>
-          </div>
-          <div className="col-span-2 flex items-center justify-center space-x-3.5 md:col-span-1">
-            <button className="hover:text-primary">
-              <Link href={`/admin/products/${product.id}`}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-eye"
-                >
-                  <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-              </Link>
-            </button>
-            <button className="hover:text-primary">
-              <Link href={`/admin/products/edit-product/${product.id}`}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-pencil"
-                >
-                  <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                  <path d="m15 5 4 4" />
-                </svg>
-              </Link>
-            </button>
-            <button
-              className="hover:text-red-600"
-              onClick={() => deleteProduct(product.id)}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-trash-2"
+            <div className="col-span-1 hidden items-center sm:flex">
+              <p className="text-body-sm font-medium text-dark dark:text-dark-6">
+                {product.rack.location}
+              </p>
+            </div>
+            <div className="col-span-1 hidden items-center sm:flex">
+              <p className="text-body-sm font-medium text-dark dark:text-dark-6">
+                {product.stock}
+              </p>
+            </div>
+            <div className="col-span-2 flex items-center">
+              <p className="text-body-sm font-medium text-green">
+                Rp.{product.priceSell.toFixed(2)}
+              </p>
+            </div>
+            <div className="col-span-2 flex items-center justify-center space-x-3.5 md:col-span-1">
+              <button className="hover:text-primary">
+                <Link href={`/admin/products/${product.id}`}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-eye"
+                  >
+                    <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </Link>
+              </button>
+              <button className="hover:text-primary">
+                <Link href={`/admin/products/edit-product/${product.id}`}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-pencil"
+                  >
+                    <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                    <path d="m15 5 4 4" />
+                  </svg>
+                </Link>
+              </button>
+              <button
+                className="hover:text-red-600"
+                onClick={() => deleteProduct(product.id)}
               >
-                <path d="M3 6h18" />
-                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                <line x1="10" x2="10" y1="11" y2="17" />
-                <line x1="14" x2="14" y1="11" y2="17" />
-              </svg>
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-trash-2"
+                >
+                  <path d="M3 6h18" />
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                  <line x1="10" x2="10" y1="11" y2="17" />
+                  <line x1="14" x2="14" y1="11" y2="17" />
+                </svg>
+              </button>
+            </div>
           </div>
+        ))
+      ) : (
+        <div className="py-6 text-center">
+          <p className="text-base font-medium text-gray-600 dark:text-gray-300">
+            No products found for the selected criteria.
+          </p>
         </div>
-      ))}
+      )}
     </div>
   );
 };

@@ -32,17 +32,18 @@ const AddPopupDialog: React.FC<AddPopupDialogProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="w-96 max-w-lg rounded-[10px] border border-stroke bg-white p-6 shadow-lg">
+      <div className="w-96 max-w-lg rounded-[10px] border border-stroke bg-white p-6 shadow-lg
+      dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
         <div className="flex justify-between border-b border-stroke pb-4">
-          <h3 className="font-medium text-dark">
+          <h3 className="font-medium text-dark dark:text-white">
             {content === "category" ? "Add Category" : "Add Shelve"}
           </h3>
-          <button onClick={onClose} className="text-dark">
+          <button onClick={onClose} className="text-dark dark:text-white">
             ✕
           </button>
         </div>
         <form onSubmit={handleSubmit} className="mt-4">
-          <label className="mb-2 block text-body-sm font-medium text-dark">
+          <label className="mb-2 block text-body-sm font-medium text-dark dark:text-white">
             {content === "category" ? "Category Name" : "Shelve Location"}
           </label>
           <input

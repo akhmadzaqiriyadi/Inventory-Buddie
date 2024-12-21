@@ -34,12 +34,13 @@ const EditPopupDialog: React.FC<EditPopupDialogProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="w-96 max-w-lg rounded-[10px] border border-stroke bg-white p-6 shadow-lg">
+      <div className="w-96 max-w-lg rounded-[10px] border border-stroke bg-white p-6 shadow-lg
+      dark:border-dark-3 dark:bg-gray-dark dark:shadow-card">
         <div className="flex justify-between border-b border-stroke pb-4">
-          <h3 className="font-medium text-dark">
-            {content === "category" ? "Add Category" : "Add Shelve"}
+          <h3 className="font-medium text-dark dark:text-white">
+            {content === "category" ? "Edit Category" : "Edit Shelve"}
           </h3>
-          <button onClick={onClose} className="text-dark">
+          <button onClick={onClose} className="text-dark dark:text-white">
             ✕
           </button>
         </div>
@@ -53,7 +54,7 @@ const EditPopupDialog: React.FC<EditPopupDialogProps> = ({
             disabled
             className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5 py-3 text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary dark:disabled:bg-dark mb-2"
           />
-          <label className="mb-2 block text-body-sm font-medium text-dark">
+          <label className="mb-2 block text-body-sm font-medium text-dark dark:text-white">
             {content === "category" ? "Category Name" : "Shelve Location"}
           </label>
           <input

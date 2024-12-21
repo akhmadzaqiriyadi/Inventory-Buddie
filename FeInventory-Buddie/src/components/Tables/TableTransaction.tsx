@@ -15,7 +15,7 @@ const ProductCard = memo(({ product, onIncrement, onDecrement, selected, onSelec
           onChange={() => onSelect(product.id)}
           className="h-5 w-5 rounded border-gray-300 accent-primary"
         />
-        <p className="text-sm text-gray-500">Rack: {product.rack.location}</p>
+        <p className="text-sm dark:text-gray-300">Shelves: {product.rack.location}</p>
       </div>
       <img
         src={product.imageUrl || "/images/placeholder.png"}
@@ -31,14 +31,14 @@ const ProductCard = memo(({ product, onIncrement, onDecrement, selected, onSelec
       <div className="mt-4 flex items-center justify-end">
         <button
           onClick={() => onDecrement(product.id)}
-          className="rounded-l bg-gray-200 px-3 py-1 hover:bg-gray-300"
+          className="rounded-l bg-gray-200 px-3 py-1 hover:bg-gray-300 text-slate-900"
         >
           -
         </button>
-        <span className="bg-gray-100 px-4 py-1 text-center">{quantity || 0}</span>
+        <span className="bg-gray-100 text-slate-900 px-4 py-1 text-center">{quantity || 0}</span>
         <button
           onClick={() => onIncrement(product.id)}
-          className="rounded-r bg-gray-200 px-3 py-1 hover:bg-gray-300"
+          className="rounded-r bg-gray-200 px-3 py-1 hover:bg-gray-300 text-slate-900"
         >
           +
         </button>
@@ -198,7 +198,7 @@ const AddTransactionPage = () => {
             onChange={handleRackChange}
             className="appearance-none rounded-[7px] border border-stroke bg-transparent py-3 pl-4 pr-8 outline-none transition focus:border-primary active:border-primary dark:border-dark-3 dark:bg-dark-2"
           >
-            <option value="">All Racks</option>
+            <option value="">All Shelves</option>
             {racks.map((rack) => (
               <option key={rack.id} value={rack.location}>
                 {rack.location}
